@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfólio - Bruna Elen</title>
+
+  <link
+  rel="icon"
+  type="image/png"
+  href="assets/icons/portfolio_logo.png"
+/>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      overflow-x: hidden;
+      position: relative;
+      background-color: #0f0f0f;
+      color: white;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      background-color: rgba(15, 15, 15, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #222;
+      z-index: 1000;
+    }
+
+    .navbar {
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar h1 {
+      font-size: 28px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 15px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: white;
+      background-color: #1f1f1f;
+      padding: 10px 18px;
+      border-radius: 12px;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      background-color: #333;
+      transform: translateY(-2px);
+    }
+
+    section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 100px 20px;
+    }
+
+    .hero {
+      text-align: center;
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero h2 {
+      font-size: 60px;
+      margin-bottom: 25px;
+    }
+
+    .hero p {
+      color: #aaa;
+      max-width: 700px;
+      line-height: 1.6;
+      font-size: 18px;
+      margin-bottom: 35px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .hero-buttons a {
+      text-decoration: none;
+      padding: 14px 28px;
+      border-radius: 16px;
+      transition: 0.3s;
+      font-weight: bold;
+    }
+
+    .primary-btn {
+      background-color: white;
+      color: black;
+    }
+
+    .secondary-btn {
+      border: 1px solid #444;
+      color: white;
+    }
+
+    .hero-buttons a:hover {
+      transform: scale(1.05);
+    }
+
+    .section-title {
+      font-size: 42px;
+      margin-bottom: 50px;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      background-color: #181818;
+      border: 1px solid #222;
+      border-radius: 24px;
+      overflow: hidden;
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      border-color: #555;
+    }
+
+    .card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 25px;
+    }
+
+    .card h3 {
+      font-size: 28px;
+      margin-bottom: 15px;
+    }
+
+    .card p {
+      color: #aaa;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .card a {
+      text-decoration: none;
+      color: white;
+      background-color: #2a2a2a;
+      padding: 10px 18px;
+      border-radius: 12px;
+      display: inline-block;
+      transition: 0.3s;
+    }
+
+    .card a:hover {
+      background-color: #444;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .skill {
+      background-color: #1f1f1f;
+      padding: 12px 20px;
+      border-radius: 999px;
+      transition: 0.3s;
+    }
+
+    .skill:hover {
+      transform: scale(1.05);
+      background-color: #333;
+    }
+
+    #particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+    }
+
+    .background-glow {
+      position: fixed;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(90,90,255,0.25), transparent 70%);
+      top: -120px;
+      right: -120px;
+      z-index: -1;
+      animation: floatGlow 8s ease-in-out infinite;
+    }
+
+    @keyframes floatGlow {
+      0% {
+        transform: translateY(0px) translateX(0px);
+      }
+      50% {
+        transform: translateY(30px) translateX(-20px);
+      }
+      100% {
+        transform: translateY(0px) translateX(0px);
+      }
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0px);
+      }
+    }
+
+    .hero,
+    .card,
+    .skill {
+      animation: fadeUp 1s ease;
+    }
+
+    .hero h2 {
+      background: linear-gradient(90deg, white, #8ab4ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .card {
+      position: relative;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 24px;
+      padding: 1px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent);
+      -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+
+    .card:hover img {
+      transform: scale(1.05);
+    }
+
+    .card img {
+      transition: 0.5s;
+    }
+
+    .nav-links a:hover,
+    .card:hover,
+    .skill:hover,
+    .hero-buttons a:hover {
+      box-shadow: 0 0 20px rgba(138, 180, 255, 0.2);
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      border-top: 1px solid #222;
+      color: #777;
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .hero h2 {
+        font-size: 42px;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="particles"></canvas>
+  <div class="background-glow"></div>
+  <header>
+    <div class="navbar">
+      <h1>Bruna Elen Araujo Nascimento</h1>
+
+      <div class="nav-links">
+        <a href="#home">Início</a>
+        <a href="#projects">Projetos</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contato</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero" id="home">
+    <h2 id="typing-text"></h2>
+
+    <p>
+      Estudante de Ciência da Computação com experiência em Business Intelligence,
+      dashboards e análise de dados utilizando Python, Qlik Sense e Power BI.
+    </p>
+
+    <div class="hero-buttons">
+      <a href="#projects" class="primary-btn">Ver Projetos</a>
+      <a href="https://github.com/brunaelen" target="_blank" class="secondary-btn">
+        GitHub
+      </a>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2 class="section-title">Projetos</h2>
+
+    <div class="projects-grid">
+      <div class="card">
+        <img
+          src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop"
+          alt="Projeto Qlik"
+        />
+
+        <div class="card-content">
+          <h3>Dashboard Qlik Sense</h3>
+
+          <p>
+            Desenvolvimento e manutenção de dashboards institucionais e indicadores.
+          </p>
+
+          <a href="pages/qlik.html">Ver Projeto</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img
+          src="https://images.unsplash.com/photo-1526379095098-d400fd0bf935?q=80&w=1200&auto=format&fit=crop"
+          alt="Projeto SRAG"
+        />
+
+        <div class="card-content">
+          <h3>Projeto SRAG</h3>
+
+          <p>
+            Análise e tratamento de dados epidemiológicos utilizando Python e Pandas.
+          </p>
+
+          <a href="pages/dashboard_SRAG.html">Ver Projeto</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2 class="section-title">Skills</h2>
+
+    <div class="skills">
+      <div class="skill">Python</div>
+      <div class="skill">SQL</div>
+      <div class="skill">Power BI</div>
+      <div class="skill">Qlik Sense</div>
+      <div class="skill">Pandas</div>
+      <div class="skill">NumPy</div>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <p>Ciência de Dados & BI<br>Contato: brunaelen9152@gmail.com</p>
+  </footer>
+  <script>
+    const text = 'Portfólio de Dados & BI';
+    const typingElement = document.getElementById('typing-text');
+
+    let index = 0;
+
+    function typeText() {
+      if (index < text.length) {
+        typingElement.innerHTML += text.charAt(index);
+        index++;
+        setTimeout(typeText, 90);
+      }
+    }
+
+    typeText();
+  </script>
+  <script>
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const particles = [];
+
+    for (let i = 0; i < 80; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        size: Math.random() * 3,
+        speedX: (Math.random() - 0.5) * 0.5,
+        speedY: (Math.random() - 0.5) * 0.5,
+      });
+    }
+
+    function animateParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      particles.forEach((particle) => {
+        ctx.beginPath();
+        ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(138, 180, 255, 0.5)';
+        ctx.fill();
+
+        particle.x += particle.speedX;
+        particle.y += particle.speedY;
+
+        if (particle.x < 0 || particle.x > canvas.width) particle.speedX *= -1;
+        if (particle.y < 0 || particle.y > canvas.height) particle.speedY *= -1;
+      });
+
+      requestAnimationFrame(animateParticles);
+    }
+
+    animateParticles();
+
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+  </script>
+</body>
+</html>
